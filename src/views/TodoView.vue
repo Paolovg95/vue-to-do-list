@@ -19,7 +19,7 @@
       :key="task.id"
     >
       <v-list-item
-        @click="doneTask(task.id)"
+        @click="$store.dispatch('doneTask',task.id)"
         :class="{'green lighten-5' : task.completed }"
 
       >
@@ -39,7 +39,7 @@
           </v-list-item-content>
           <v-list-item-action>
             <v-btn
-              @click.stop="deleteTask(task.id)"
+              @click.stop="$store.dispatch('deleteTask',task.id)"
               icon>
               <v-icon color="red lighten-2">mdi-delete</v-icon>
             </v-btn>

@@ -14,12 +14,28 @@ export default new Vuex.Store({
         let tasks = response.data
         commit('SET_TASKS', tasks)
       });
-    }
+    },
+    deleteTask({ commit }, id ) {
+      commit('deleteTask', id)
+    },
+    doneTask({ state, commit }, id) {
+      let task = state.tasks.filter(task => task.id === id)[0]
+      console.log(task)
+      commit('doneTask', task)
+    },
   },
+
   mutations: { // Mutate our State
     SET_TASKS(state, tasks) {
       state.tasks = tasks
-    }
+    },
+    deleteTask(state, id) {
+      state.tasks = state.tasks.filter(task => task.id !== id)
+    },
+    doneTask(state, task) {
+      task.completed = !task.completed
+    },
+
   },
   getters: {
   },
