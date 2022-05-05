@@ -27,6 +27,7 @@ export default new Vuex.Store({
         completed: false
       }
       commit('addTask', newTask)
+      commit('showSnackbar')
     },
 
     deleteTask({ commit }, id ) { // Delete Action

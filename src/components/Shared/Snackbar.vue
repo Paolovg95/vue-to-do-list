@@ -20,7 +20,7 @@
 <script>
 export default {
     data: () => ({
-    text: `I'm a multi-line snackbar.`,
+    text: `Task Added!`,
   }),
 }
 </script>
