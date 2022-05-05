@@ -20,7 +20,6 @@ export default new Vuex.Store({
         commit('SET_TASKS', tasks)
       });
     },
-
     addTask({ commit }, newTaskTitle) { // Create Action
       let newTask = {
         id: Date.now(),
@@ -52,6 +51,14 @@ export default new Vuex.Store({
     deleteTask(state, id) { // Delete Mutation
       state.tasks = state.tasks.filter(task => task.id !== id)
     },
+    // Edit task Title,
+    updateTaskTitle(state, payload) {
+      // Get the Task by its ID
+      console.log(payload)
+      let task = state.tasks.filter(task => task.id === payload.id)[0]
+      task.title = payload.title // /update Title
+    },
+
     doneTask(state, task) { // Check Mutation
       task.completed = !task.completed
     },

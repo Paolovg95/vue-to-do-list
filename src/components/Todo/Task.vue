@@ -20,7 +20,7 @@
             </v-list-item-title>
           </v-list-item-content>
           <v-list-item-action>
-            <!-- Show the Dialog if dialog-delete = true -->
+            <!-- Show the Delete Dialog if the Icon is clicked -->
             <v-btn
               @click.stop="dialogs.delete = true"
               icon>
@@ -28,8 +28,9 @@
             </v-btn>
           </v-list-item-action>
           <v-list-item-action>
+            <!-- Show the Edit Dialog if the Icon is clicked -->
             <v-btn
-              @click="editTask(task.id)"
+              @click="dialogs.edit = true"
               icon>
               <v-icon color="blue lighten-2">mdi-pencil</v-icon>
             </v-btn>
@@ -44,6 +45,11 @@
         @close="dialogs.delete = false"
         :task="task"
       />
+      <dialog-edit
+        v-if="dialogs.edit"
+        @close="dialogs.edit = false"
+        :task="task"
+      />
     </div>
 </template>
 
@@ -54,12 +60,14 @@ export default {
   data () {
     return {
       dialogs: {
+        edit: false,
         delete: false
       }
     }
   },
   components: {
-    'dialog-delete': require('@/components/Todo/Dialogs/DialogDelete.vue').default
+    'dialog-delete': require('@/components/Todo/Dialogs/DialogDelete.vue').default,
+    'dialog-edit': require('@/components/Todo/Dialogs/DialogEdit.vue').default
   }
 }
 </script>
