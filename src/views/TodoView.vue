@@ -1,14 +1,6 @@
 <template>
   <div class="home">
-    <v-text-field
-      v-model="newTaskTitle"
-      @keyup.enter="addTask"
-      class="pa-7"
-      label="Add Task"
-      append-icon="mdi-plus"
-      clearable
-    >
-    </v-text-field>
+    <field-add-task/>
     <v-list
       v-if="tasks.length"
       flat
@@ -74,15 +66,11 @@
 </template>
 
 <script>
+import FieldAddTask from '@/components/Todo/FieldAddTask.vue'
+
 import {mapState} from 'vuex'
   export default {
     name: 'Home',
-
-    data () {
-      return {
-        newTaskTitle: '',
-      }
-    },
     mounted() {
       this.$store.dispatch('setTasks')
       // Dispatch triggers the Action inside the Store
@@ -92,12 +80,10 @@ import {mapState} from 'vuex'
         'tasks'
       ]),
     },
-    methods: {
-      addTask() { // Local Method
-        this.$store.dispatch('addTask', this.newTaskTitle)
-        this.newTaskTitle = ''
-      }
-    }
+    components: { // Import Field Text Component
+      'field-add-task': require('@/components/Todo/FieldAddTask.vue')
+      .default
+    },
   }
 </script>
 
