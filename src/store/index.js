@@ -9,7 +9,7 @@ export default new Vuex.Store({
     tasks: [],
     // Snackbar State access from State
     snackbar: {
-      show: true
+      show: false
     }
   },
   actions: { // Make the Call
@@ -52,6 +52,9 @@ export default new Vuex.Store({
     doneTask(state, task) { // Check Mutation
       task.completed = !task.completed
     },
+    showSnackbar(state) {
+      state.snackbar.show = true
+    }
 
   },
   getters: {
