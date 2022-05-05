@@ -66,6 +66,9 @@ export default new Vuex.Store({
         state.snackbar.show = true
       }, timeout); // Time will be 0. Shows Snackbar right away
     },
+    hideSnackbar(state) { // Hide Snackbar with Close button
+      state.snackbar.show = false
+    }
 
   },
   getters: {
