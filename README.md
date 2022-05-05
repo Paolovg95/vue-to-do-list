@@ -13,8 +13,7 @@ Componentes-UI (7)
 
 Field-Text. 
 
-src/assets/field-text.png
-
+![Alt text](url "https://github.com/Paolovg95/vue-to-do-list/blob/master/src/assets/field-text.png")
 
 
 List-Tasks. 
