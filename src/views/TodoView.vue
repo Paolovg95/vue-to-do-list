@@ -2,8 +2,7 @@
   <div class="home">
     <v-text-field
       v-model="newTaskTitle"
-      @click:append="addTask()"
-      @keyup.enter="addTask()"
+      @keyup.enter="addTask"
       class="pa-7"
       label="Add Task"
       append-icon="mdi-plus"
@@ -91,8 +90,15 @@ import {mapState} from 'vuex'
     computed: {
       ...mapState([
         'tasks'
-      ])
+      ]),
     },
+    methods: {
+      addTask() { // Local Method
+        this.$store.dispatch('addTask', this.newTaskTitle)
+        this.newTaskTitle = ''
+      }
+    }
+  }
     // methods: {
     //   addTask() {
     //     let newTask = {
@@ -114,8 +120,6 @@ import {mapState} from 'vuex'
     //      this.tasks = this.tasks.filter(task => task.id !== id);
     //   },
     // }
-  }
-
 </script>
 
 <style lang="sass">
