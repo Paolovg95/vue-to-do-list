@@ -7,6 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: { // Set our State
     tasks: [],
+    // Snackbar State access from State
+    snackbar: {
+      show: true
+    }
   },
   actions: { // Make the Call
     setTasks({ commit }) {

@@ -1,7 +1,6 @@
 <template>
    <v-snackbar
-      v-model="snackbar"
-      :multi-line="multiLine"
+    v-model="$store.state.snackbar.show"
     >
       {{ text }}
 
@@ -20,7 +19,9 @@
 
 <script>
 export default {
-
+    data: () => ({
+    text: `I'm a multi-line snackbar.`,
+  }),
 }
 </script>
 
