@@ -75,44 +75,47 @@
 </template>
 
 <script>
-  import axios from 'axios'
+import {mapState} from 'vuex'
   export default {
+    name: 'Home',
 
-    name: 'ToDo',
     data () {
       return {
         newTaskTitle: '',
-        tasks: []
       }
     },
-    mounted: function () {
-        axios.get("https://jsonplaceholder.typicode.com/todos")
-        .then(response => {
-          this.tasks = response.data.slice(0,10)
-        })
+    mounted() {
+      this.$store.dispatch('setTasks')
+      // Dispatch triggers the Action inside the Store
     },
-    methods: {
-      addTask() {
-        let newTask = {
-        id: Date.now(),
-        title: this.newTaskTitle,
-        completed: false
-      }
-      this.tasks.push(newTask)
-      this.newTaskTitle = ''
+    computed: {
+      ...mapState([
+        'tasks'
+      ])
     },
-      editTask(id){
-        this.task = this.tasks[id].title
-      },
-      doneTask(id) {
-        let task = this.tasks.filter(task => task.id === id)[0];
-        task.completed = !task.completed
-      },
-      deleteTask(id) {
-         this.tasks = this.tasks.filter(task => task.id !== id);
-      },
-    }
+    // methods: {
+    //   addTask() {
+    //     let newTask = {
+    //       id: Date.now(),
+    //       title: this.newTaskTitle,
+    //       completed: false
+    //     }
+    //     this.tasks.push(newTask)
+    //     this.newTaskTitle = ''
+    //   },
+    //   editTask(id){
+    //     this.task = this.tasks[id].title
+    //   },
+    //   doneTask(id) {
+    //     let task = this.tasks.filter(task => task.id === id)[0];
+    //     task.completed = !task.completed
+    //   },
+    //   deleteTask(id) {
+    //      this.tasks = this.tasks.filter(task => task.id !== id);
+    //   },
+    // }
   }
+
 </script>
 
 <style lang="sass">
