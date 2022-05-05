@@ -1,111 +1,22 @@
 <template>
   <div class="home">
-    <v-text-field
-      v-model="newTaskTitle"
-      @keyup.enter="addTask"
-      class="pa-7"
-      label="Add Task"
-      append-icon="mdi-plus"
-      clearable
-    >
-    </v-text-field>
-    <v-list
-      v-if="tasks.length"
-      flat
-    >
-    <div
-      v-for="task in tasks"
-      :key="task.id"
-    >
-      <v-list-item
-        @click="$store.dispatch('doneTask',task.id)"
-        :class="{'green lighten-5' : task.completed }"
-
-      >
-        <template v-slot:default >
-          <v-list-item-action>
-            <v-checkbox
-            :input-value="task.completed"
-            ></v-checkbox>
-          </v-list-item-action>
-
-          <v-list-item-content>
-            <v-list-item-title
-              :class="{'text-decoration-line-through' : task.completed }"
-            >
-              {{ task.title }}
-            </v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-btn
-              @click.stop="$store.dispatch('deleteTask',task.id)"
-              icon>
-              <v-icon color="red lighten-2">mdi-delete</v-icon>
-            </v-btn>
-          </v-list-item-action>
-          <v-list-item-action>
-            <v-btn
-              @click="editTask(task.id)"
-              icon>
-              <v-icon color="blue lighten-2">mdi-pencil</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </template>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-    </div>
-
-    </v-list>
-    <div
-      v-else
-      class="no-tasks"
-    >
-    <v-icon
-      size="100px"
-      color="primary"
-    >
-    mdi-check
-    </v-icon>
-    <div class="text-h5 primary--text">No tasks</div>
-    </div>
+    <field-add-task/>
+    <list-tasks
+    />
+    <no-tasks
+      v-if="$store.state.tasks.length === 0 "
+    />
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
   export default {
     name: 'Home',
-
-    data () {
-      return {
-        newTaskTitle: '',
-      }
+    components: { // Import Field Text Component
+      'field-add-task': require('@/components/Todo/FieldAddTask.vue')
+      .default,
+      'list-tasks': require('@/components/Todo/ListTasks.vue').default,
+      'no-tasks': require('@/components/Todo/NoTasks.vue').default,
     },
-    mounted() {
-      this.$store.dispatch('setTasks')
-      // Dispatch triggers the Action inside the Store
-    },
-    computed: {
-      ...mapState([
-        'tasks'
-      ]),
-    },
-    methods: {
-      addTask() { // Local Method
-        this.$store.dispatch('addTask', this.newTaskTitle)
-        this.newTaskTitle = ''
-      }
-    }
   }
 </script>
-
-<style lang="sass">
-  .no-tasks
-    position: absolute
-    left: 50%
-    top: 50%
-    transform: translate(-50%, -50%)
-    opacity: 0.5
-</style>
