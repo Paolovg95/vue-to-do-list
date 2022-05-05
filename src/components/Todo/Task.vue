@@ -40,7 +40,9 @@
       <v-divider></v-divider>
       <!-- If Dialogs Delete exists, pass Task as Props -->
       <dialog-delete
-        v-if="dialogs.delete" :task="task"
+        v-if="dialogs.delete"
+        @close="dialogs.delete = false"
+        :task="task"
       />
     </div>
 </template>
