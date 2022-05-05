@@ -5,6 +5,8 @@ Realicé solicitudes via Axios para consumir información del endpoint citado en
 
 https://jsonplaceholder.typicode.com/todos
 
+
+
 La información a elección fue lista de ‘To-do’s’, de manera que sea sencilla CRUD para cada Item.
 
 Componentes-UI (7)
@@ -51,9 +53,6 @@ Snackbar.
 
 ![image](https://user-images.githubusercontent.com/26658714/167012976-e89a941f-9e2a-4d51-a0dd-33166cb1d585.png)
 
-
-
-Las Routes del proyecto corresponden a “Home” y “About”.
 
 ## Herramientas Front-End
 
