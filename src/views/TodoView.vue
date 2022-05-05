@@ -99,27 +99,6 @@ import {mapState} from 'vuex'
       }
     }
   }
-    // methods: {
-    //   addTask() {
-    //     let newTask = {
-    //       id: Date.now(),
-    //       title: this.newTaskTitle,
-    //       completed: false
-    //     }
-    //     this.tasks.push(newTask)
-    //     this.newTaskTitle = ''
-    //   },
-    //   editTask(id){
-    //     this.task = this.tasks[id].title
-    //   },
-    //   doneTask(id) {
-    //     let task = this.tasks.filter(task => task.id === id)[0];
-    //     task.completed = !task.completed
-    //   },
-    //   deleteTask(id) {
-    //      this.tasks = this.tasks.filter(task => task.id !== id);
-    //   },
-    // }
 </script>
 
 <style lang="sass">
