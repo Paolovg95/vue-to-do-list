@@ -1,32 +1,49 @@
 # to-do-list
-Como Frame Base, el Wireframe(Base) fue utilizado gracias a Vuetify. También utilicé Componentes de Vuetify – UI: Navegation Components, Lists, Icons, Dialogs con diferentes propiedades adaptadas para cada componente.
+Como Frame Base, el Wireframe(Base) fue utilizado gracias a Vuetify. 
 
 Realicé solicitudes via Axios para consumir información del endpoint citado en las indicaciones.
-La información a elección fue lista de ‘To-do’s’, de manera que sea sencilla leer, crear y eliminar cada Item.
 
-Las routes del proyecto corresponden a “Home” y “About”.
-Adapté métodos de AddTask, DoneTask, DeleteTask. 
+https://jsonplaceholder.typicode.com/todos
+
+La información a elección fue lista de ‘To-do’s’, de manera que sea sencilla CRUD para cada Item.
+
+Componentes-UI (7)
+
+### Todo
+
+Field-Text. 
+
+List-Tasks. 
+
+Task. 
+
+No-tasks.
 
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Dialogs
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Edit Dialog. 
 
-### Lints and fixes files
-```
-npm run lint
-```
+Delete Dialog. 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Shared
+
+Snackbar. 
+
+
+Las Routes del proyecto corresponden a “Home” y “About”.
+
+## Herramientas Front-End
+
+### Vuetify. 
+Librería utilizada para la interfaz de usuario de Vue con componentes de materiales modernos y estéticamente bellos.
+
+### Vuex.    
+Para la gestión de estado + biblioteca para aplicaciones Vue.js, Vuex es un herramienta poderosa que sirve como un almacén centralizado para todos los componentes de una aplicación, con reglas que garantizan que el estado solo se puede modificar de forma predecible.
+
+## Project. 
+
+https://still-brushlands-05182.herokuapp.com/#/. 
+
+
