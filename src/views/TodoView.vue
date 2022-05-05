@@ -1,56 +1,9 @@
 <template>
   <div class="home">
     <field-add-task/>
-    <v-list
-      v-if="tasks.length"
-      flat
-    >
-    <div
-      v-for="task in tasks"
-      :key="task.id"
-    >
-      <v-list-item
-        @click="$store.dispatch('doneTask',task.id)"
-        :class="{'green lighten-5' : task.completed }"
-
-      >
-        <template v-slot:default >
-          <v-list-item-action>
-            <v-checkbox
-            :input-value="task.completed"
-            ></v-checkbox>
-          </v-list-item-action>
-
-          <v-list-item-content>
-            <v-list-item-title
-              :class="{'text-decoration-line-through' : task.completed }"
-            >
-              {{ task.title }}
-            </v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-btn
-              @click.stop="$store.dispatch('deleteTask',task.id)"
-              icon>
-              <v-icon color="red lighten-2">mdi-delete</v-icon>
-            </v-btn>
-          </v-list-item-action>
-          <v-list-item-action>
-            <v-btn
-              @click="editTask(task.id)"
-              icon>
-              <v-icon color="blue lighten-2">mdi-pencil</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </template>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-    </div>
-
-    </v-list>
-    <div
+    <list-tasks
+    />
+    <!-- <div
       v-else
       class="no-tasks"
     >
@@ -61,28 +14,17 @@
     mdi-check
     </v-icon>
     <div class="text-h5 primary--text">No tasks</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import FieldAddTask from '@/components/Todo/FieldAddTask.vue'
-
-import {mapState} from 'vuex'
   export default {
     name: 'Home',
-    mounted() {
-      this.$store.dispatch('setTasks')
-      // Dispatch triggers the Action inside the Store
-    },
-    computed: {
-      ...mapState([
-        'tasks'
-      ]),
-    },
     components: { // Import Field Text Component
       'field-add-task': require('@/components/Todo/FieldAddTask.vue')
-      .default
+      .default,
+      'list-tasks': require('@/components/Todo/ListTasks.vue').default
     },
   }
 </script>
