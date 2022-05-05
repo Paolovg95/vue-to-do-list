@@ -9,7 +9,8 @@ export default new Vuex.Store({
     tasks: [],
     // Snackbar State access from State
     snackbar: {
-      show: false
+      show: false,
+      text: ''
     }
   },
   actions: { // Make the Call
@@ -27,11 +28,12 @@ export default new Vuex.Store({
         completed: false
       }
       commit('addTask', newTask)
-      commit('showSnackbar')
+      commit('showSnackbar', 'Task Added!')
     },
 
     deleteTask({ commit }, id ) { // Delete Action
       commit('deleteTask', id)
+      commit('showSnackbar', 'Task Deleted')
     },
     doneTask({ state, commit }, id) { // Check Action
       let task = state.tasks.filter(task => task.id === id)[0]
@@ -53,9 +55,17 @@ export default new Vuex.Store({
     doneTask(state, task) { // Check Mutation
       task.completed = !task.completed
     },
-    showSnackbar(state) {
-      state.snackbar.show = true
-    }
+    showSnackbar(state, text) {
+      let timeout = 0
+      if (state.snackbar.show) {
+        state.snackbar.show = false // Hide the Snackbar if there is another one being displayed
+        timeout = 500
+      }
+      setTimeout(() => { // No Delay if there is no SnackBar being displayed.
+        state.snackbar.text = text
+        state.snackbar.show = true
+      }, timeout); // Time will be 0. Shows Snackbar right away
+    },
 
   },
   getters: {
