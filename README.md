@@ -13,9 +13,10 @@ Componentes-UI (7)
 
 Field-Text. 
 
-![Alt text](url "https://github.com/Paolovg95/vue-to-do-list/blob/master/src/assets/field-text.png")
-
-
+<div style="width:60px ; height:60px">
+![Employee data](https://github.com/Paolovg95/vue-to-do-list/blob/master/src/assets/field-text.png/raw=true "Employee Data title")
+<div>
+  
 List-Tasks. 
 
 Task. 
